@@ -1,17 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Index**
-
-- [Algunas maneras de temporizar](#algunas-maneras-de-temporizar)
-  - [Usando el tiempo y el procesador para nada](#usando-el-tiempo-y-el-procesador-para-nada)
-  - [Timers](#timers)
-    - [Power Up Timer (PWRT)](#power-up-timer-pwrt)
-    - [Oscillator Start-Up Timer (OST)](#oscillator-start-up-timer-ost)
-    - [Watchdog Timer (WDT)](#watchdog-timer-wdt)
-    - [TMR0 Timer](#tmr0-timer)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 #Algunas maneras de temporizar  
 
 

@@ -1,1 +1,0 @@
-doctoc . --title "**Index**"
