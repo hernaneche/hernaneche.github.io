@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Index**
+
+- [P vs NP problem](#p-vs-np-problem)
+  - [Improbable but possible](#improbable-but-possible)
+  - [Hard for whom?](#hard-for-whom)
+  - [P are natural-born NP](#p-are-natural-born-np)
+  - [Sources of clues](#sources-of-clues)
+  - [Learning](#learning)
+  - [General, particular, dynamic](#general-particular-dynamic)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ##P vs NP problem##
 ###Improbable but possible###
 Trying to guess a meaningful number within a list of possibles in the hope of finding some useful information like music, science, images, movies, is terribly unlikely, is a so improbable bet that it's faster to put a whole universe to evolve rather than find a piece of art or any useful information by doing an uninformed blind search or lucky guessing it, but strangely enough, it is not impossible. 

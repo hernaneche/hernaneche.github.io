@@ -1,7 +1,20 @@
-#Algunas maneras de temporizar
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Index**
+
+- [Algunas maneras de temporizar](#algunas-maneras-de-temporizar)
+  - [Usando el tiempo y el procesador para nada](#usando-el-tiempo-y-el-procesador-para-nada)
+  - [Timers](#timers)
+    - [Power Up Timer (PWRT)](#power-up-timer-pwrt)
+    - [Oscillator Start-Up Timer (OST)](#oscillator-start-up-timer-ost)
+    - [Watchdog Timer (WDT)](#watchdog-timer-wdt)
+    - [TMR0 Timer](#tmr0-timer)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+#Algunas maneras de temporizar  
 
 
----
 
 ##Usando el tiempo y el procesador para nada
 
@@ -90,15 +103,15 @@ Accesibles por software
 	• Timer1: 16-bit timer/counter with external crystal/clock capability
 	• Timer2: 8-bit timer/counter with 8-bit period register, prescaler and postscaler
 	
-##Power Up Timer (PWRT)
+###Power Up Timer (PWRT)
 
 Este temporizador produce un retardo de 72 ms desde que se le aplica alimentación al microcontrolador hasta que empieza a correr el programa; durante este tiempo el  microcontrolador es mantenido en un estado de reset. La función de este temporizador es esperar que se estabilice el nivel de tensión de alimentación ante posibles transitorios.Este timer puede ser habilitado o deshabilitado mediante la configuración en el momento de la programación. No es accesible en tiempo de ejecución.
 
-##Oscillator Start-Up Timer (OST)
+###Oscillator Start-Up Timer (OST)
 
 Este temporizador provee 1024 ciclos de oscilador de retardo y comienza a andar después de la finalización del PWRT o luego de un reset. La función del OST es esperar que el cristal oscilador esté en funcionamiento estable. Este temporizador es activado solo si se configura un oscilador en modo XT, LP o HS. No hay bits específicos de configuración para deshabilitar este timer, ni tampoco puede ser accedido por software.
 
-##Watchdog Timer (WDT)
+###Watchdog Timer (WDT)
 
 El watchdog timer es un temporizador de tipo RC interno (baja precisión) que se incrementa libremente y de forma independiente del oscilador externo colocado, esto significa que el WDT seguirá en funcionamiento aún en ausencia de una señal de clock. Durante la operación normal, un desbordamiento de este timer provoca un RESET del microcontrolador. Este temporizador puede ser permanentemente deshabilitado mediante un bit de configuración cuando se programa el PIC. 
 Con el WDT habilitado, el programador debe evitar que el microcontrolador entre en RESET haciendo reinicio del temporizador dentro del programa, a intervalos regulares, antes que se produzca el desbordamiento. Esto se realiza mediante la instrucción **clrwdt**, que lo vuelve a cero.
@@ -109,7 +122,7 @@ El período de este timer (tiempo que tarda en desbordar) es de 18ms para el PIC
 
 La instrucción clrwdt se recomienda poner en algún bucle principal del programa y no dentro de interrupciones de timer, esto es para evitar situaciones donde las interrupciones siguen funcionando pero el programa principal no (por ejemplo porque intenta ejecutar código en un lugar de memoria donde no hay, o queda tildado en un bucle infinito), en ese caso queremos que se produzca un reset. No debe usarse para compensar errores de programación sino exclusivamente para salvar de alguna situación provocada por fallas de alimentación u otros problemas de hardware.
 
-##TMR0 Timer
+###TMR0 Timer
 
 Este timer se compone de un registro de 8 bits que puede ser accedido a través del registro TMR0 que se encuentra en la dirección 0x01 del mapa de memoria. Y tiene dos modos de operación como timer y como contador, se configuran a través del bit **T0CS** en el registro OPTION_REG.
 
