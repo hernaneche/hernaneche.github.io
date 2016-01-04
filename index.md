@@ -1,1 +1,2 @@
-[a relative link](!#/pnp.md)
+[pnp](#!/pnp.md)
+[temporizar](#!/temporizar.md)
