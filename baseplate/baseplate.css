@@ -9,7 +9,7 @@ p, blockquote, th, td {
 /* Layout. */
 html {
   background-color: #a4acb4;
-  font-size: 1.0em;
+ 
 }
 
 body{  font-family:'Merriweather', 'Georgia', serif; font-weight:300; font-size: 18px;  text-align: justify;margin: 0 auto; width: 45em;
@@ -23,24 +23,6 @@ body{  font-family:'Merriweather', 'Georgia', serif; font-weight:300; font-size:
 
 h1,h2,h3,h4{ font-family: "Open Sans", sans-serif;color:#000; margin-top:1.6em; margin-bottom:.4em; }
 
-body {
-  background-color: #a4acb4;
-  color: #333;
-  font-family: Tinos, Garamond, serif;
-  font-variant-ligatures: common-ligatures;
-  -moz-font-feature-settings: "liga=1, swsh=0, cswh=0";
-  font-size: 16px;
-}
-
-
-/* Headers and subtitles. */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  font-style: normal;
-  font-family: Tinos, Garamond, serif;
-  color: #111;
-  clear: left;
-}
 
 h1 {
   font-size: 2.25em;
@@ -171,7 +153,7 @@ div.footer {
   background-color: #fff;
   margin: 0 auto;
   margin-bottom: 40px;
-  width: 608px;
+  width: 45em;
   border: 1px solid #758392;
   border-radius: 3px;
   padding: 40px 65px 25px 65px;
