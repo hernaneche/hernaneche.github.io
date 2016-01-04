@@ -16,7 +16,7 @@ html {
     background-size: cover;
 }
 
-html{font-family:'Merriweather', 'Georgia', serif; 
+body{font-family:'Merriweather', 'Georgia', serif; 
     font-weight:300;
     font-size: 17px;  
 	text-align: justify;
