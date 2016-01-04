@@ -16,8 +16,16 @@ html {
     background-size: cover;
 }
 
-html{font-family:'Merriweather', 'Georgia', serif; font-weight:300; font-size: 17px;  text-align: justify;margin: 0 auto; width: 50em;
+html{font-family:'Merriweather', 'Georgia', serif; 
+    font-weight:300;
+    font-size: 17px;  
+	text-align: justify;
+	margin: 0 auto; 
+	width: 50em;
+	max-width:90%; 
+	word-spacing: -2px;
 }
+
 
 h1,h2,h3,h4{ font-family: "Open Sans", sans-serif;color:#000; margin-top:1.6em; margin-bottom:.4em; }
 
