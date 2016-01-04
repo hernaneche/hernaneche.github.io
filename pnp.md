@@ -1,16 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Index**
-
-- [P vs NP problem](#p-vs-np-problem)
-  - ![Improbable but possible](improbable-but-possible)
-  - ![Hard for whom?](hard-for-whom)
-  - ![P are natural-born NP](p-are-natural-born-np)
-  - [Sources of clues](#sources-of-clues)
-  - [Learning](#learning)
-  - [General, particular, dynamic](#general-particular-dynamic)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ##P vs NP problem##
 ###Improbable but possible###
