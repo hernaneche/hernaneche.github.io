@@ -158,9 +158,7 @@ div.footer {
 #wrapper, .page {
   background-color: #fff;
   margin: 0 auto;
-  margin-bottom: 40px;
-  width: 50em;
-  border: 1px solid #758392;
+  margin-bottom: 40px;    
   border-radius: 3px;
   padding: 40px 65px 25px 65px;
   position: relative;
