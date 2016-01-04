@@ -3,9 +3,9 @@
 **Index**
 
 - [P vs NP problem](#p-vs-np-problem)
-  - [Improbable but possible](#improbable-but-possible)
-  - [Hard for whom?](#hard-for-whom)
-  - [P are natural-born NP](#p-are-natural-born-np)
+  - ![Improbable but possible](improbable-but-possible)
+  - ![Hard for whom?](hard-for-whom)
+  - ![P are natural-born NP](p-are-natural-born-np)
   - [Sources of clues](#sources-of-clues)
   - [Learning](#learning)
   - [General, particular, dynamic](#general-particular-dynamic)
