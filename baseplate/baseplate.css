@@ -12,6 +12,17 @@ html {
   font-size: 1.0em;
 }
 
+body{  font-family:'Merriweather', 'Georgia', serif; font-weight:300; font-size: 18px;  text-align: justify;margin: 0 auto; width: 45em;
+    background:linear-gradient(
+      rgba(255, 255, 255, 0.9), 
+      rgba(255, 255, 255, 0.9))
+    ,url("../img/background.jpg") center center no-repeat; 
+    background-attachment:fixed;  
+    background-size: cover;
+}
+
+h1,h2,h3,h4{ font-family: "Open Sans", sans-serif;color:#000; margin-top:1.6em; margin-bottom:.4em; }
+
 body {
   background-color: #a4acb4;
   color: #333;
