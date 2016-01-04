@@ -1,2 +1,2 @@
-[pnp](#!/pnp.md)
-[temporizar](#!/temporizar.md)
+[pnp](#!/pnp)  
+[temporizar](#!/temporizar)
