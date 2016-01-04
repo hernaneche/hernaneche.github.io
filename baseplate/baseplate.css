@@ -7,18 +7,16 @@ p, blockquote, th, td {
 
 
 /* Layout. */
-html {
-  background-color: #a4acb4;
- 
-}
-
-body{  font-family:'Merriweather', 'Georgia', serif; font-weight:300; font-size: 18px;  text-align: justify;margin: 0 auto; width: 45em;
+html {  
     background:linear-gradient(
       rgba(255, 255, 255, 0.9), 
       rgba(255, 255, 255, 0.9))
     ,url("../img/background.jpg") center center no-repeat; 
     background-attachment:fixed;  
     background-size: cover;
+}
+
+html{font-family:'Merriweather', 'Georgia', serif; font-weight:300; font-size: 17px;  text-align: justify;margin: 0 auto; width: 50em;
 }
 
 h1,h2,h3,h4{ font-family: "Open Sans", sans-serif;color:#000; margin-top:1.6em; margin-bottom:.4em; }
@@ -153,7 +151,7 @@ div.footer {
   background-color: #fff;
   margin: 0 auto;
   margin-bottom: 40px;
-  width: 45em;
+  width: 50em;
   border: 1px solid #758392;
   border-radius: 3px;
   padding: 40px 65px 25px 65px;
