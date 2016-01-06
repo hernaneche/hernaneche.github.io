@@ -19,12 +19,12 @@ Esta sub-rutina puede llamarse mediante `call retardo`, para esperar el tiempo d
 No todas las instrucciones tardan lo mismo, en los microcontroladores diferentes instrucciones pueden requerir diferentes tiempos de ejecución ( cantidad de ciclos de clock ). Vamos a suponer para estos cálculos que las instrucciones para dar saltos (como `goto`, `call` y `return`) tardan 2 ciclos, mientras que todas las demás ocupan 1 ciclo,  el retardo total para el ejemplo es de 2 del call + 1 nop + 1 nop + 1 nop + 2 del return = 7 ciclos .
 
 Esta subrutina sirve sólo para retardos muy pequeños, en un rango cercano al tiempo de una instrucción individual, porque si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que el retardo es fijo. Podemos mejorar estos asuntos agregando un bucle y una variable. 
-		
+
     retardoBucle:	movlw d'100'		;W = 100
-                        movwf contador	 	;contador = W
-    bucle:   		decfsz contador,1	;contador = contador -1
-	    		goto bucle	        ;ir a bucle
-    			return    		;volver
+			movwf contador	 	;contador = W
+    bucle:		decfsz contador,1	;contador = contador -1
+			goto bucle	        ;ir a bucle
+			return    		;volver
 
 En este ejemplo cada vez que se ejecuta la instrucción **decfsz** descuenta 1 al contador, cuando es cero saltea la instrucción siguiente (en este caso goto), terminando así el ciclo y pasando al return.
   
@@ -39,15 +39,15 @@ Otra manera de implementar el retardo para que sea más flexible, es no poner ni
 
 	retardoFlexible:	movwf contador	 
 	bucle:			decfsz contador,1	
-	    			goto bucle	
-    				return    
+				goto bucle	
+				return    
 
 En este caso antes del call debe inicializarse W:
 				
-					movlw d'100'		 ; 1 ciclo
-					call retardoFlexible ; 305 ciclos   
-					movlw d'65'			 ; 1 ciclo
-					call retardoFlexible ; 200 ciclos 
+				movlw d'100'		; 1 ciclo
+				call retardoFlexible	; 305 ciclos   
+				movlw d'65'		; 1 ciclo
+				call retardoFlexible	; 200 ciclos 
 					
 
 Para calcular el tiempo en segundos basta conocer el tiempo de 1 ciclo, si 1 ciclo = 1uS (microsegundo), entonces 200 ciclos son 200uS,para un retardo de 1 milisegundo necesitaremos 1000 ciclos y para un segundo 1000000.
