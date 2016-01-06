@@ -9,9 +9,9 @@ Una forma de temporizar acciones es introducir retardos, ejecutar un número det
 Ejemplo: 
     
     retardo:	nop 
-    			nop
-    			nop				
-    			return            
+		nop
+		nop				
+		return            
 
 Evidentemente esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa exclusivamente al retardo, obstaculizando la posible realización de otras tareas.
 
@@ -21,10 +21,10 @@ No todas las instrucciones tardan lo mismo, en los microcontroladores diferentes
 Esta subrutina sirve sólo para retardos muy pequeños, en un rango cercano al tiempo de una instrucción individual, porque si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que el retardo es fijo. Podemos mejorar estos asuntos agregando un bucle y una variable. 
 		
     retardoBucle:	movlw d'100'		;W = 100
-					movwf contador	 	;contador = W
+			movwf contador	 	;contador = W
     bucle:   		decfsz contador,1	;contador = contador -1
-	    			goto bucle	        ;ir a bucle
-    				return    			;volver
+	    		goto bucle	        ;ir a bucle
+    			return    		;volver
 
 En este ejemplo cada vez que se ejecuta la instrucción **decfsz** descuenta 1 al contador, cuando es cero saltea la instrucción siguiente (en este caso goto), terminando así el ciclo y pasando al return.
   
@@ -38,9 +38,9 @@ En este caso son valores que dan resultado entero, pero la mayoría de las veces
 Otra manera de implementar el retardo para que sea más flexible, es no poner ningún valor fijo literal al contador inicial, sino que ese valor pueda variarse en cada llamado, cargándolo previamente en W, desde afuera de la subrutina, antes de hacer el call. 
 
 	retardoFlexible:	movwf contador	 
-    bucle:   			decfsz contador,1	
-	    				goto bucle	
-    					return    
+	bucle:			decfsz contador,1	
+	    			goto bucle	
+    				return    
 
 En este caso antes del call debe inicializarse W:
 				
@@ -55,12 +55,12 @@ Para calcular el tiempo en segundos basta conocer el tiempo de 1 ciclo, si 1 cic
 Este ejemplo usa 1 byte para especificar el tiempo, no admite entonces un número mayor a 255; una forma de resolver este problema es hacer un bucle que llama a otro bucle, con cuidado de no anidar demasiadas veces porque se podría desbordar la pila/stack.
 
  
-	retardoAnidado:		movwf contador2 
-    bucle2:   			decfsz contador2,1							
+	retardoAnidado:			movwf contador2 
+    	bucle2:   			decfsz contador2,1							
 	    				goto retardar	
 	    				goto salir    					
 	retardar:			call retardoBucle
-						goto bucle2
+					goto bucle2
 	salir:				return    
 
 Otra vez cuentas... 
@@ -126,7 +126,7 @@ Cuando el preescaler es asignado al timer TMR0, se intercala este contador entre
 
 Para configurarlo deben escribirse los primeros 3 bits del registro OPTION_REG, permite 8 opciones:
 
-    bits OPTION     000   001   010   011   100    101    110    111
+    bits OPTION		000   001   010   011   100    101    110    111
     para TMR0  		1:2   1:4   1:8   1:16  1:32   1:64   1:128  1:256
     para WDT  		1:1   1:2   1:4   1:8   1:16   1:32   1:64   1:128
 
@@ -156,9 +156,9 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
 	    bcf STATUS,5;Direccionamiento: selección de banco 0
 	    
     ;PROGRAMA PRINCIPAL
-    test:   btfss INTCON,2  ;test de bandera T0IF, indica desbordó timer(overflow)
-    		goto test   ;si no esta en uno seguimos chequeando (vuelve a test)
-		    bcf INTCON,2;si está en uno, la bajamos y continúa la ejecución
+    test:	btfss INTCON,2  ;test de bandera T0IF, indica desbordó timer(overflow)
+		goto test   ;si no esta en uno seguimos chequeando (vuelve a test)
+		bcf INTCON,2;si está en uno, la bajamos y continúa la ejecución
     
     cambia: btfss PORTB, 0  ;conmuta leds (si estaba encendido, apaga, y viceversa)
     		goto prende
