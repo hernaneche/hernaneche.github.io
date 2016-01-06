@@ -1,3 +1,5 @@
+#The Kerckhoffs's Principle 
+
 [Auguste Kerckhoffs](http://en.wikipedia.org/wiki/Auguste_Kerckhoffs) was a linguist and a cryptographer who, back in 1883, published various essays about Military Cryptography (two words usually related, but not necessarily). Kerckhoffs's principle is one of the many rules of thumb included in his essays, it reads as follows: _«The design of a system should not require secrecy»_.
 
 What does it means!? Here, we'll try to unravel it, reviewing its meaning and questioning our understanding about what privacy is.
