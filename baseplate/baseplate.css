@@ -147,7 +147,7 @@ h1 + h2 {
 /* Page footer. */
 div.footer {
   width: 100%;
-  float: right;
+  text-align: right;
   border-top: thin solid #c9c8c7;
   margin-top: 15px;
 }
