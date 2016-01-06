@@ -33,7 +33,7 @@ function loadFile(docName) {
 }
 
 function loadFileSuccess(doc) {
-  var converter = new Showdown.converter();
+  var converter = new showdown.Converter();
 
   // HTMLize content.
   var html = converter.makeHtml(doc.content());
