@@ -2,8 +2,8 @@
 ##Textos 
 
 ###Thoughts
-[The Kerckhoffs's Principle](#!/Kerckhoffs) &middot; about this principle, why it works and why it doesn't.  
-[P vs NP problem](#!/pnp) &middot;  about how to solve any but not every problem.
+[The Kerckhoffs's Principle](#!/Kerckhoffs) &middot; why it works and why it doesn't.  
+[P vs NP problem](#!/pnp) &middot;  how to solve any but not every problem.
 
 ###Materials
 
