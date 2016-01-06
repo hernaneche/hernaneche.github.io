@@ -9,9 +9,9 @@ Una forma de temporizar acciones es introducir retardos, ejecutar un número det
 Ejemplo: 
     
     retardo:	nop 
-		nop
-		nop				
-		return            
+                nop
+                nop				
+                return            
 
 Evidentemente esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa exclusivamente al retardo, obstaculizando la posible realización de otras tareas.
 
@@ -21,7 +21,7 @@ No todas las instrucciones tardan lo mismo, en los microcontroladores diferentes
 Esta subrutina sirve sólo para retardos muy pequeños, en un rango cercano al tiempo de una instrucción individual, porque si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que el retardo es fijo. Podemos mejorar estos asuntos agregando un bucle y una variable. 
 		
     retardoBucle:	movlw d'100'		;W = 100
-			movwf contador	 	;contador = W
+                        movwf contador	 	;contador = W
     bucle:   		decfsz contador,1	;contador = contador -1
 	    		goto bucle	        ;ir a bucle
     			return    		;volver
