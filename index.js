@@ -51,7 +51,7 @@ function loadFileSuccess(doc) {
     var modifiedDate = new Date();
     modifiedDate.setTime(lastModified * 1000);  // ms since epoch.
     var hostn=window.location.hostname;
-    $('.footer .meta').html('<a href="https://'+ hostn + '">'+hostn+'</a>  <p style="padding-left:5em;"> updated : ' + modifiedDate.toDateString()+ '</p>');
+    $('.footer .meta').html('<a href="https://'+ hostn + '">'+hostn+'</a> &nbsp;&nbsp;&nbsp;&nbsp; updated : ' + modifiedDate.toDateString()+ '&nbsp;&nbsp;&nbsp;&nbsp;');
   }
 }
 
