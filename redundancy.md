@@ -1,6 +1,6 @@
 Redundancy In Programming Languages   
 
-<div class="noi">_"Everything should be made as simple as possible, but not simpler."_-A. Einstein</div>
+_"Everything should be made as simple as possible, but not simpler."_-A. Einstein
 
 **Minimalism And Redundancy**  
 
