@@ -37,10 +37,10 @@ En este caso son valores que dan resultado entero, pero la mayoría de las veces
 
 Otra manera de implementar el retardo para que sea más flexible, es no poner ningún valor fijo literal al contador inicial, sino que ese valor pueda variarse en cada llamado, cargándolo previamente en W, desde afuera de la subrutina, antes de hacer el call. 
 
-	retardoFlexible:	movwf contador	 
-	bucle:			decfsz contador,1	
-				goto bucle	
-				return    
+        retardoFlexible:        movwf contador	 
+        bucle:                  decfsz contador,1	
+                                goto bucle	
+                                return    
 
 En este caso antes del call debe inicializarse W:
 				
