@@ -1,5 +1,7 @@
 
-###Notas
+###Textos 
+
+[Kerckhoffs]((#!/Kerckhoffs)
 
 [P vs NP](#!/pnp)  
 
