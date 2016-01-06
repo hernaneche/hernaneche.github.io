@@ -18,7 +18,7 @@ html {
 
 body{font-family:'Istok Web', sans-serif, 'Georgia'; 
 	font-weight:400;
-	font-size: 18px;  
+	font-size: 19px;  
 	text-align: justify;
 	margin: 0 auto; 
 	width: 50em;
@@ -172,7 +172,7 @@ div.footer {
 /* Content text. */
 p {
   color: #333;
-  line-height: 1.5em;
+  line-height: 1.45em;
   margin: 15px 0 15px 0;
   text-align: justify;
 }
