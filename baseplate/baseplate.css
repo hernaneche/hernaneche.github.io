@@ -103,12 +103,12 @@ h1 + h2 {
   color: #999;
 }
 .meta a {
-  color: #999;
+  color: ##994491;
   text-decoration: none;
   border: 0;
 }
 .meta a:hover {
-  color: #333;
+  color: ##0044FF;
 }
 
 
