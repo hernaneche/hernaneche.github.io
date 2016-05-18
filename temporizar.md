@@ -1,20 +1,20 @@
 #Algunas maneras de temporizar  
+  
+  
+##Usando el procesador para pasar el tiemp
+Una forma de temporizar acciones es intercalar instrucciones de retardo, sabiendo cuanto tarda cada una (cantidad de ciclos de clock) se pueden ejecutar repetidas veces, y contarlas para calcular el intervalo de tiempo total. La instrucción 'nop' es útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
 
-##Usando el procesador para pasar el tiempo
-
-Una forma de temporizar acciones es intercalando retardos con instrucciones que se ejecutan repetidas veces, sabiendo cuanto tarda cada una (cantidad de ciclos de clock) podemos contarlas y saber el intervalo de tiempo total. La instrucción 'nop' es útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
-
-Ejemplo en una subrutina 
+Ejemplo en una subrutina de retardo
     
     retardo:	nop 
                 nop
                 nop				
                 return            
 
-Evidentemente esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa  exclusivamente a hacer un retardo, obstaculizando la posible realización de otras tareas.
+Esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa exclusivamente a hacer un retardo, obstaculizando la posible realización de otras tareas.
 
-La sub-rutina puede llamarse mediante `call retardo`, tarda el tiempo de tres instrucciones `nop`, además hay que sumar el tiempo de ejecución de las instrucciones `call` y `return`, que son necesarias para hacer el llamado y para volver de la sub-rutina (call y return).
-Además no todas las instrucciones tardan lo mismo, en microcontroladores diferentes las instrucciones pueden requerir diferentes tiempos de ejecución ( cantidad de ciclos de clock ). Supongamos que las instrucciones para dar saltos (como `goto`, `call` y `return`) tardan 2 ciclos, y que todas las demás ocupan 1 ciclo, el total de ciclos para el ejemplo es 2 del call + 1 nop + 1 nop + 1 nop + 2 del return = 7 ciclos . Ese es el tiempo total que consume la subrutina.
+La subrutina puede llamarse mediante `call retardo`, y tarda el tiempo de tres instrucciones `nop`, hay que sumar además el tiempo de ejecución de las instrucciones `call` y `return`, que son necesarias para hacer el llamado y para volver de la subrutina (call y return).
+Además no todas las instrucciones tardan lo mismo, en microcontroladores diferentes las instrucciones pueden requerir diferentes tiempos de ejecución (cantidad de ciclos de clock). Supongamos que las instrucciones para dar saltos (como `goto`, `call` y `return`) tardan 2 ciclos, y que todas las demás ocupan 1 ciclo, el total de ciclos para el ejemplo es 2 del call + 1 nop + 1 nop + 1 nop + 2 del return = 7 ciclos . Ese es el tiempo total que consume la subrutina.
 
 Vemos que sólo sirve para retardos muy pequeños, tiempos cercanos al de una instrucción individual, si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que es un tiempo fijo. Podemos mejorar ambos asuntos con un bucle y una variable. 
 
