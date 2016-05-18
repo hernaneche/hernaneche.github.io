@@ -18,11 +18,11 @@ Además no todas las instrucciones tardan lo mismo, en microcontroladores difere
 
 Vemos que sólo sirve para retardos muy pequeños, tiempos cercanos al de una instrucción individual, si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que es un tiempo fijo. Podemos mejorar ambos asuntos con un bucle y una variable. 
 
-    retardoBucle:	movlw d'100'		;W = 100 valor fijo literal al contador inicial
-			movwf contador	 	;contador = W
-    bucle:		decfsz contador,1	;contador = contador - 1
-			goto bucle	        ;ir a bucle
-			return    		;volver donde indique el stack
+    retardoBucle:       movlw d'100'            ;W = 100 valor fijo literal al contador inicial
+                        movwf contador          ;contador = W
+    bucle:              decfsz contador,1       ;contador = contador - 1
+                        goto bucle	        ;ir a bucle
+                        return                  ;volver donde indique el stack
 
 Cada vez que se ejecuta la instrucción **decfsz** descuenta 1 a la variable contador, cuando llega a cero saltea la instrucción siguiente (en este caso goto), terminando así el ciclo y pasando al return.
   
@@ -35,10 +35,10 @@ En este caso son valores que dan resultado entero, la mayoría de las veces no e
 
 Otra manera más flexible es que el valor inicial pueda variarse, cargándolo previamente en W, pero desde afuera de la subrutina, en cada llamado, antes de hacer el call. 
 
-        retardoFlexible:        movwf contador		; contador = W, W = ? valor fijado afuera
-        bucle:                  decfsz contador,1	; contador = contador - 1
-                                goto bucle		; ir a bucle
-                                return    		; volver donde indique el stack
+        retardoFlexible:        movwf contador          ; contador = W, W = ? valor fijado afuera
+        bucle:                  decfsz contador,1       ; contador = contador - 1
+                                goto bucle              ; ir a bucle
+                                return                  ; volver donde indique el stack
 
 Antes de cada call debe inicializarse W:
 				
@@ -53,13 +53,13 @@ Para calcular el tiempo en segundos basta conocer el tiempo de 1 ciclo, si 1 cic
 El ejemplo usa 1 byte para especificar el tiempo, esto no admite entonces un número mayor a 255; para resolver este problema podemos hacer un bucle que llame a otro bucle, con cuidado de no anidar demasiadas veces porque se podría desbordar la pila/stack.
 
  
-	retardoAnidado:			movwf contador2 
-    	bucle2:   			decfsz contador2,1							
-	    				goto retardar	
-	    				goto salir    					
-	retardar:			call retardoBucle
+	retardoAnidado:                 movwf contador2 
+    	bucle2:                         decfsz contador2,1							
+                                        goto retardar	
+                                        goto salir    					
+	retardar:                       call retardoBucle
                                         goto bucle2
-	salir:				return    
+	salir:                          return    
 
 Otra vez cuentas... 
 > La instrucción`goto salir` podría haberse ahorrado, pero así queda más claro el punto de retorno que está al final de la función. Calculemos, si W viene cargado con el valor n, entonces tenemos 2 ciclos del `call` + 1 ciclo del `movwf` + (1 del decfsz + 2 del `goto` + el retardoBucle + 2 del segundo `goto` ) * (n-1) + 2 ciclos del `decfsz` cuando salta + 2 del `goto salir` + 2 del `return`. Si retardoBucle= 305 y n = 100, tenemos total 1+(5+305)*99 +2 +2 + 2 = 30699 ciclos  
@@ -141,32 +141,32 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
     OPTREG equ 0x01 ; Registro OPT, entre otras cosas, para configurar el timer0
     INTCON equ 0x0B ; Registro INTCON entre otras, bits de condición de interrupción
     
-    	org 0x00;indica posición 0 (reset) del microcontrolador
+            org 0x00               ;indica posición 0 (reset) del microcontrolador
     
 	    ;CONFIGURACIONES
-	    bsf STATUS,5;Direccionamiento: selección de banco 1
-	    bcf TRISB,0 ;bit 0 del TRISB en 1 => bit 0 del PORTB como salida
-	    bcf OPTREG,5;configuramos freq. cristal/4 como clock del TMR0
-	    bcf OPTREG,3;Asignamos el prescaler al timer
-	    bsf OPTREG,0;prescaler 1:256 bit [0,1,2] del OPTREG en 1.
-	    bsf OPTREG,1;opción 111 del manual
-	    bsf OPTREG,2;para que cuente uno cada 256 ciclos
-	    bcf STATUS,5;Direccionamiento: selección de banco 0
+	    bsf STATUS,5           ;Direccionamiento: selección de banco 1
+	    bcf TRISB,0            ;bit 0 del TRISB en 1 => bit 0 del PORTB como salida
+	    bcf OPTREG,5           ;configuramos freq. cristal/4 como clock del TMR0
+	    bcf OPTREG,3           ;Asignamos el prescaler al timer
+	    bsf OPTREG,0           ;prescaler 1:256 bit [0,1,2] del OPTREG en 1.
+	    bsf OPTREG,1           ;opción 111 del manual
+	    bsf OPTREG,2           ;para que cuente uno cada 256 ciclos
+	    bcf STATUS,5           ;Direccionamiento: selección de banco 0
 	    
     ;PROGRAMA PRINCIPAL
-    test:	btfss INTCON,2  ;test de bandera T0IF, indica desbordó timer(overflow)
-		goto test   ;si no esta en uno seguimos chequeando (vuelve a test)
-		bcf INTCON,2;si está en uno, la bajamos y continúa la ejecución
+    test:	btfss INTCON,2     ;test de bandera T0IF, indica desbordó timer(overflow)
+		goto test          ;si no esta en uno seguimos chequeando (vuelve a test)
+		bcf INTCON,2       ;si está en uno, la bajamos y continúa la ejecución
     
-    cambia: btfss PORTB, 0  ;conmuta leds (si estaba encendido, apaga, y viceversa)
+    cambia: btfss PORTB, 0         ;conmuta leds (si estaba encendido, apaga, y viceversa)
     		goto prende
     		goto apaga
     
-    prende: bsf PORTB, 0;pone en uno bit 0 del PORTB (enciende led)
-    		goto test;
+    prende: bsf PORTB, 0           ;pone en uno bit 0 del PORTB (enciende led)
+    		goto test
     
-    apaga:  bcf PORTB, 0;pone en cero bit 0 del PORTB (apaga led)
-    		goto test;
+    apaga:  bcf PORTB, 0           ;pone en cero bit 0 del PORTB (apaga led)
+    		goto test
     
     end
     
