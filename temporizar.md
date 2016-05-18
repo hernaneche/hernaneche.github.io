@@ -3,7 +3,7 @@
 ---
   
 ##Procesando instrucciones 
-El procesador normalmente está ejecutando instrucciones sin detenerse, cuando no queremos que dos acciones sean consecutivas, una manera de separarlas en el tiempo es ejecutar otras en el medio, conociendo cuanto tarda cada instrucción (cantidad de ciclos de clock) se puede calcular el intevalo de retardo según el conteo total de instrucciones, las cuales normalmente se ejecutan repetidas veces. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
+El procesador normalmente está ejecutando instrucciones sin detenerse, si no queremos que dos acciones sean consecutivas, una manera de separarlas en el tiempo es ejecutar algunas otras en el medio, y conociendo cuanto tarda cada instrucción (cantidad de ciclos de clock) contando las instrucciones y sus repeticiones, se puede calcular el retardo. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
 
 Ejemplo en una subrutina de retardo
     
