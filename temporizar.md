@@ -144,29 +144,30 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
             org 0x00               ;indica posición 0 (reset) del microcontrolador
     
 	    ;CONFIGURACIONES
-	    bsf STATUS,5           ;Direccionamiento: selección de banco 1
+	    bsf STATUS,5           ;Direccionamiento: selección BANK1
 	    bcf TRISB,0            ;bit 0 del TRISB en 1 => bit 0 del PORTB como salida
 	    bcf OPTREG,5           ;configuramos freq. cristal/4 como clock del TMR0
 	    bcf OPTREG,3           ;Asignamos el prescaler al timer
 	    bsf OPTREG,0           ;prescaler 1:256 bit [0,1,2] del OPTREG en 1.
 	    bsf OPTREG,1           ;opción 111 del manual
 	    bsf OPTREG,2           ;para que cuente uno cada 256 ciclos
-	    bcf STATUS,5           ;Direccionamiento: selección de banco 0
+	    bcf STATUS,5           ;Direccionamiento: selección BANK0
 	    
-    ;PROGRAMA PRINCIPAL
-    test:       btfss INTCON,2     ;test de bandera T0IF, indica desbordó timer(overflow)
-                goto test          ;si no esta en uno seguimos chequeando (vuelve a test)
+            ;PROGRAMA PRINCIPAL
+    
+    bucle:      btfss INTCON,2     ;test de bandera T0IF, indica desbordó timer(overflow)
+                goto bucle         ;si no esta en uno seguimos chequeando (vuelve a test)
                 bcf INTCON,2       ;si está en uno, la bajamos y continúa la ejecución
     
-    cambia: btfss PORTB, 0         ;conmuta leds (si estaba encendido, apaga, y viceversa)
+    cambia:     btfss PORTB, 0         ;conmuta leds (si estaba encendido, apaga, y viceversa)
     		goto prende
     		goto apaga
     
-    prende: bsf PORTB, 0           ;pone en uno bit 0 del PORTB (enciende led)
-    		goto test
+    prende:     bsf PORTB, 0           ;pone en uno bit 0 del PORTB (enciende led)
+                goto bucle
     
-    apaga:  bcf PORTB, 0           ;pone en cero bit 0 del PORTB (apaga led)
-    		goto test
+    apaga:      bcf PORTB, 0           ;pone en cero bit 0 del PORTB (apaga led)
+                goto bucle
     
     end
     
