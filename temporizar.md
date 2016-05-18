@@ -124,7 +124,7 @@ Cuando el preescaler es asignado al timer TMR0, se intercala este contador entre
 
 Para configurarlo deben escribirse los primeros 3 bits del registro OPTION_REG, permite 8 opciones:
 
-    bits OPTION		000   001   010   011   100    101    110    111
+    bits OPTION         000   001   010   011   100    101    110    111
     para TMR0           1:2   1:4   1:8   1:16  1:32   1:64   1:128  1:256
     para WDT            1:1   1:2   1:4   1:8   1:16   1:32   1:64   1:128
 
@@ -159,14 +159,14 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
                 goto bucle         ;si no esta en uno seguimos chequeando (vuelve a test)
                 bcf INTCON,2       ;si está en uno, la bajamos y continúa la ejecución
     
-    cambia:     btfss PORTB, 0         ;conmuta leds (si estaba encendido, apaga, y viceversa)
+    cambia:     btfss PORTB, 0     ;conmuta leds (si estaba encendido, apaga, y viceversa)
                 goto prende
                 goto apaga
     
-    prende:     bsf PORTB, 0           ;pone en uno bit 0 del PORTB (enciende led)
+    prende:     bsf PORTB, 0       ;pone en uno bit 0 del PORTB (enciende led)
                 goto bucle
     
-    apaga:      bcf PORTB, 0           ;pone en cero bit 0 del PORTB (apaga led)
+    apaga:      bcf PORTB, 0       ;pone en cero bit 0 del PORTB (apaga led)
                 goto bucle
     
     end
