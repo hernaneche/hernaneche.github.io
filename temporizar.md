@@ -42,11 +42,11 @@ Otra manera más flexible es que el valor inicial pueda variarse, cargándolo pr
 
 Antes de cada call debe inicializarse W:
 				
-				movlw d'100'		; 1 ciclo, carga 100 en W 
-				call retardoFlexible	; 305 ciclos   
+				movlw d'100'            ; 1 ciclo, carga 100 en W 
+				call retardoFlexible    ; 305 ciclos   
 				
-				movlw d'65'		; 1 ciclo, carga 65 en W 
-				call retardoFlexible	; 200 ciclos 
+				movlw d'65'             ; 1 ciclo, carga 65 en W 
+				call retardoFlexible    ; 200 ciclos 
 					
 Para calcular el tiempo en segundos basta conocer el tiempo de 1 ciclo, si 1 ciclo = 1uS (microsegundo), entonces 200 ciclos son 200uS, un retardo de 1 milisegundo son 1000 ciclos y un segundo 1000000.
 					
@@ -58,7 +58,7 @@ El ejemplo usa 1 byte para especificar el tiempo, esto no admite entonces un nú
 	    				goto retardar	
 	    				goto salir    					
 	retardar:			call retardoBucle
-					goto bucle2
+                                        goto bucle2
 	salir:				return    
 
 Otra vez cuentas... 
