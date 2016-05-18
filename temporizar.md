@@ -1,6 +1,6 @@
 #Algunas maneras de temporizar  
 
-##Usando el procesador para pasar el tiempo.
+##Usando el procesador para pasar el tiempo
 
 Una forma de temporizar acciones es intercalando retardos con instrucciones que se ejecutan repetidas veces, sabiendo cuanto tarda cada una (cantidad de ciclos de clock) podemos contarlas y saber el intervalo de tiempo total. La instrucción 'nop' es útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
 
