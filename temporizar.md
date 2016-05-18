@@ -21,7 +21,7 @@ Vemos que sólo sirve para retardos muy pequeños, tiempos cercanos al de una in
     retardoBucle:       movlw d'100'            ;W = 100 valor fijo literal al contador inicial
                         movwf contador          ;contador = W
     bucle:              decfsz contador,1       ;contador = contador - 1
-                        goto bucle	        ;ir a bucle
+                        goto bucle              ;ir a bucle
                         return                  ;volver donde indique el stack
 
 Cada vez que se ejecuta la instrucción **decfsz** descuenta 1 a la variable contador, cuando llega a cero saltea la instrucción siguiente (en este caso goto), terminando así el ciclo y pasando al return.
@@ -53,13 +53,13 @@ Para calcular el tiempo en segundos basta conocer el tiempo de 1 ciclo, si 1 cic
 El ejemplo usa 1 byte para especificar el tiempo, esto no admite entonces un número mayor a 255; para resolver este problema podemos hacer un bucle que llame a otro bucle, con cuidado de no anidar demasiadas veces porque se podría desbordar la pila/stack.
 
  
-	retardoAnidado:                 movwf contador2 
-    	bucle2:                         decfsz contador2,1							
+        retardoAnidado:                 movwf contador2 
+        bucle2:                         decfsz contador2,1							
                                         goto retardar	
                                         goto salir    					
-	retardar:                       call retardoBucle
+        retardar:                       call retardoBucle
                                         goto bucle2
-	salir:                          return    
+        salir:                          return    
 
 Otra vez cuentas... 
 > La instrucción`goto salir` podría haberse ahorrado, pero así queda más claro el punto de retorno que está al final de la función. Calculemos, si W viene cargado con el valor n, entonces tenemos 2 ciclos del `call` + 1 ciclo del `movwf` + (1 del decfsz + 2 del `goto` + el retardoBucle + 2 del segundo `goto` ) * (n-1) + 2 ciclos del `decfsz` cuando salta + 2 del `goto salir` + 2 del `return`. Si retardoBucle= 305 y n = 100, tenemos total 1+(5+305)*99 +2 +2 + 2 = 30699 ciclos  
@@ -154,9 +154,9 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
 	    bcf STATUS,5           ;Direccionamiento: selección de banco 0
 	    
     ;PROGRAMA PRINCIPAL
-    test:	btfss INTCON,2     ;test de bandera T0IF, indica desbordó timer(overflow)
-		goto test          ;si no esta en uno seguimos chequeando (vuelve a test)
-		bcf INTCON,2       ;si está en uno, la bajamos y continúa la ejecución
+    test:       btfss INTCON,2     ;test de bandera T0IF, indica desbordó timer(overflow)
+                goto test          ;si no esta en uno seguimos chequeando (vuelve a test)
+                bcf INTCON,2       ;si está en uno, la bajamos y continúa la ejecución
     
     cambia: btfss PORTB, 0         ;conmuta leds (si estaba encendido, apaga, y viceversa)
     		goto prende
