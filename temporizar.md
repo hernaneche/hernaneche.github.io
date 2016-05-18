@@ -160,8 +160,8 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
                 bcf INTCON,2       ;si está en uno, la bajamos y continúa la ejecución
     
     cambia:     btfss PORTB, 0         ;conmuta leds (si estaba encendido, apaga, y viceversa)
-    		goto prende
-    		goto apaga
+                goto prende
+                goto apaga
     
     prende:     bsf PORTB, 0           ;pone en uno bit 0 del PORTB (enciende led)
                 goto bucle
