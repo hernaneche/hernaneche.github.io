@@ -314,7 +314,8 @@ code,
 pre,
 kbd {
   font-family: "Anonymous Pro", monospace;
-  font-size: 12px;
+  font-size: 14px;
+  word-spacing: 0px;
 }
 
 pre {
