@@ -125,8 +125,8 @@ Cuando el preescaler es asignado al timer TMR0, se intercala este contador entre
 Para configurarlo deben escribirse los primeros 3 bits del registro OPTION_REG, permite 8 opciones:
 
     bits OPTION		000   001   010   011   100    101    110    111
-    para TMR0  		1:2   1:4   1:8   1:16  1:32   1:64   1:128  1:256
-    para WDT  		1:1   1:2   1:4   1:8   1:16   1:32   1:64   1:128
+    para TMR0           1:2   1:4   1:8   1:16  1:32   1:64   1:128  1:256
+    para WDT            1:1   1:2   1:4   1:8   1:16   1:32   1:64   1:128
 
 Si por ejemplo asigno al TMR0 el modo de "timer" con una relación de 1:32, significa que cada 32 ciclos de instrucción el registro del Timer se incrementará en 1.
 
