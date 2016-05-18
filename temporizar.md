@@ -1,8 +1,8 @@
 #Algunas maneras de temporizar  
 ---
   
-##Usando el procesador para pasar el tiempo
-Una forma de temporizar acciones es intercalar instrucciones de retardo, sabiendo cuanto tarda cada una (cantidad de ciclos de clock) se pueden ejecutar repetidas veces, y contarlas para calcular el intervalo de tiempo total. La instrucción 'nop' es útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
+##Procesando instrucciones 
+El procesador normalmente está ejecutando instrucciones sin detenerse, cuando no queremos que dos acciones sean consecutivas, una manera de separarlas en el tiempo es ejecutar otras en el medio, conociendo cuanto tarda cada instrucción (cantidad de ciclos de clock) se puede calcular el intevalo de retardo según el conteo total de instrucciones, las cuales normalmente se ejecutan repetidas veces. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
 
 Ejemplo en una subrutina de retardo
     
@@ -11,7 +11,7 @@ Ejemplo en una subrutina de retardo
                 nop				
                 return            
 
-Esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa exclusivamente a hacer un retardo, obstaculizando la posible realización de otras tareas.
+Desde ya que esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa exclusivamente a hacer un retardo, obstaculizando la posible realización de otras tareas.
 
 La subrutina puede llamarse mediante `call retardo`, y tarda el tiempo de tres instrucciones `nop`, hay que sumar además el tiempo de ejecución de las instrucciones `call` y `return`, que son necesarias para hacer el llamado y para volver de la subrutina (call y return).
 Además no todas las instrucciones tardan lo mismo, en microcontroladores diferentes las instrucciones pueden requerir diferentes tiempos de ejecución (cantidad de ciclos de clock). Supongamos que las instrucciones para dar saltos (como `goto`, `call` y `return`) tardan 2 ciclos, y que todas las demás ocupan 1 ciclo, el total de ciclos para el ejemplo es 2 del call + 1 nop + 1 nop + 1 nop + 2 del return = 7 ciclos . Ese es el tiempo total que consume la subrutina.
