@@ -7,16 +7,19 @@ Un procesador normalmente ejecuta instrucciones de manera consecutiva, sin deten
 
 Ejemplo en una subrutina de retardo
 
-                accion1 
+    main:       accion1 
                 call retardo
                 accion2 
+                ...
+                ...
+                
                 
     retardo:	nop 
                 nop
                 nop				
                 return            
 
-De esta forma accion1 y accion2 están separadas por el tiempo del retardo. Esta no es la mejor manera de temporizar, entre otras cosas porque durante el retardo la ejecución del programa se dedica sola y exclusivamente a eso, obstaculizando la posible realización de otras tareas.
+De esta forma accion1 y accion2 están separadas por el tiempo del retardo. Esta no es la mejor manera de temporizar, entre otras cosas porque durante el retardo la ejecución del programa se dedica sola y exclusivamente a eso, dificulta la posible realización de otras tareas.
 
 La subrutina puede llamarse mediante `call retardo`, y tarda el tiempo de tres instrucciones `nop`, hay que sumar además el tiempo de ejecución de las instrucciones `call` y `return`, que son necesarias para hacer el llamado y para volver de la subrutina (call y return).
 Además no todas las instrucciones tardan lo mismo, en microcontroladores diferentes las instrucciones pueden requerir diferentes tiempos de ejecución (cantidad de ciclos de clock). Supongamos que las instrucciones para dar saltos (como `goto`, `call` y `return`) tardan 2 ciclos, y que todas las demás ocupan 1 ciclo, el total de ciclos para el ejemplo es 2 del call + 1 nop + 1 nop + 1 nop + 2 del return = 7 ciclos . Ese es el tiempo total que consume la subrutina.
