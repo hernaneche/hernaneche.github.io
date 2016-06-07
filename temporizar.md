@@ -3,21 +3,28 @@
 ---
   
 ##Procesando instrucciones 
-El procesador normalmente está ejecutando instrucciones sin detenerse, si no queremos que dos acciones sean consecutivas, una manera de separarlas en el tiempo es ejecutar algunas otras en el medio, y conociendo cuanto tarda cada instrucción (cantidad de ciclos de clock) contando las instrucciones y sus repeticiones, se puede calcular el retardo. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
+Un procesador normalmente ejecuta instrucciones de manera consecutiva, sin detenerse, una manera de separar dos acciones en el tiempo, es ejecutar entre medio otras instrucciones, y conociendo cuanto tarda cada una (cantidad de ciclos de clock) se pueden calcular el retardo, contando las instrucciones agregadas y sus repeticiones. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
 
 Ejemplo en una subrutina de retardo
-    
+
+                accion1 
+                call retardo
+                accion2 
+                
     retardo:	nop 
                 nop
                 nop				
                 return            
 
-Desde ya que esta no es la mejor manera de temporizar, entre otras cosas porque dedica la ejecución del programa exclusivamente a hacer un retardo, obstaculizando la posible realización de otras tareas.
+De esta forma accion1 y accion2 están separadas por el tiempo del retardo. Esta no es la mejor manera de temporizar, entre otras cosas porque durante el retardo la ejecución del programa se dedica sola y exclusivamente a eso, obstaculizando la posible realización de otras tareas.
 
 La subrutina puede llamarse mediante `call retardo`, y tarda el tiempo de tres instrucciones `nop`, hay que sumar además el tiempo de ejecución de las instrucciones `call` y `return`, que son necesarias para hacer el llamado y para volver de la subrutina (call y return).
 Además no todas las instrucciones tardan lo mismo, en microcontroladores diferentes las instrucciones pueden requerir diferentes tiempos de ejecución (cantidad de ciclos de clock). Supongamos que las instrucciones para dar saltos (como `goto`, `call` y `return`) tardan 2 ciclos, y que todas las demás ocupan 1 ciclo, el total de ciclos para el ejemplo es 2 del call + 1 nop + 1 nop + 1 nop + 2 del return = 7 ciclos . Ese es el tiempo total que consume la subrutina.
 
-Vemos que sólo sirve para retardos muy pequeños, tiempos cercanos al de una instrucción individual, si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que es un tiempo fijo. Podemos mejorar ambos asuntos con un bucle y una variable. 
+Vemos que sólo sirve para retardos muy pequeños, tiempos cercanos al de una instrucción individual, si bien se podrían agregar más nop's, esto llenaría la memoria de programa, aún con un retardo pequeño! otro problema es que es un tiempo fijo. 
+
+###Retardo con bucle
+Podemos mejorar ambos asuntos con un bucle y una variable. 
 
     retardoBucle:       movlw d'100'            ;W = 100 valor fijo literal al contador inicial
                         movwf contador          ;contador = W
@@ -34,6 +41,7 @@ Hagamos las cuentas...
 > Empezamos por 2 ciclos del call para el llamado + 1 ciclo para movlw, + 1 ciclo para movwf + (1 ciclo para decfsz + 2 ciclos del bucle) lo cual se repetirá 99 veces y en la vez numero 100 salteará el goto, es decir, 2 ciclos más de ese salto + 2 del return, total = 2+1+1+3\*99+2+2 = 8+99\*3= 305 ciclos. Si quisiéramos un tiempo diferente reutilizando el programa, cambiamos el valor de inicialización de la variable contador, n=100, total = 8+3*(n-1), despejando n, queda n = ( total - 8 ) /3 + 1 = ( total - 5 )/3, para un retardo de 200 ciclos exactos, resulta n = 65. 
 En este caso son valores que dan resultado entero, la mayoría de las veces no es fácil hacer un retardo de un número preciso de ciclos. **Esa "fórmula" sólo sirve para este programa particular, cualquier modificación al mismo hace que se tenga que elaborar una nueva!.**
 
+###Retardo con bucle variable
 Otra manera más flexible es que el valor inicial pueda variarse, cargándolo previamente en W, pero desde afuera de la subrutina, en cada llamado, antes de hacer el call. 
 
         retardoFlexible:        movwf contador          ; contador = W, W = ? valor fijado afuera
@@ -50,8 +58,9 @@ Antes de cada call debe inicializarse W:
 				call retardoFlexible    ; 200 ciclos 
 					
 Para calcular el tiempo en segundos basta conocer el tiempo de 1 ciclo, si 1 ciclo = 1uS (microsegundo), entonces 200 ciclos son 200uS, un retardo de 1 milisegundo son 1000 ciclos y un segundo 1000000.
-					
-El ejemplo usa 1 byte para especificar el tiempo, esto no admite entonces un número mayor a 255; para resolver este problema podemos hacer un bucle que llame a otro bucle, con cuidado de no anidar demasiadas veces porque se podría desbordar la pila/stack.
+
+###Retardo con bucle anidado variable					
+El ejemplo anterior usa 1 byte para especificar el tiempo, esto no admite entonces un número mayor a 255; para resolver este problema podemos hacer un bucle que llame a otro bucle, con cuidado de no anidar demasiadas veces porque se podría desbordar la pila/stack.
 
  
         retardoAnidado:                 movwf contador2 
@@ -65,7 +74,7 @@ El ejemplo usa 1 byte para especificar el tiempo, esto no admite entonces un nú
 Otra vez cuentas... 
 > La instrucción`goto salir` podría haberse ahorrado, pero así queda más claro el punto de retorno que está al final de la función. Calculemos, si W viene cargado con el valor n, entonces tenemos 2 ciclos del `call` + 1 ciclo del `movwf` + (1 del decfsz + 2 del `goto` + el retardoBucle + 2 del segundo `goto` ) * (n-1) + 2 ciclos del `decfsz` cuando salta + 2 del `goto salir` + 2 del `return`. Si retardoBucle= 305 y n = 100, tenemos total 1+(5+305)*99 +2 +2 + 2 = 30699 ciclos  
 
-Una forma diferente de hacer retardos es utilizando timers y interrupciones por hardware. 
+Una forma diferente, en general mejor, de hacer retardos es utilizando timers y interrupciones por hardware. 
 
 ##Timers
 
