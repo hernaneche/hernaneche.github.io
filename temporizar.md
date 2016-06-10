@@ -143,6 +143,10 @@ Para configurarlo deben escribirse los primeros 3 bits del registro OPTION_REG, 
 
 Si por ejemplo asigno al TMR0 el modo de "timer" con una relación de 1:32, significa que cada 32 ciclos de instrucción el registro del Timer se incrementará en 1.
 
+<p align="center"> 
+<img src="https://raw.githubusercontent.com/hernaneche/hernaneche.github.io/master/diagram_t0.png" />
+</p>
+
 Una forma conveniente de utilizar el timer es habilitando una interrupción para que "avise" cuando se desborda, otra manera es chequear la bandera continuamente (polling), aunque el timer puede usarse así, sin interrupciones, no es la mejor manera, aquí un código para probar la versión polling:
 
 
