@@ -123,9 +123,11 @@ Se recomienda que la instrucción **clrwdt** esté en un bucle principal del pro
 
 Este timer se compone de un registro de 8 bits TMR0 que se encuentra en la dirección 0x01 del mapa de memoria. Tiene dos modos de operación, como timer y como contador, se configuran a través del bit **T0CS** en el registro OPTION_REG.
 
+<img src="https://raw.githubusercontent.com/hernaneche/hernaneche.github.io/master/diagram_t0.png" />
+
 - T0CS==0 es modo "timer", el timer se incrementa por cada ciclo de instrucción (1:1) si no se configura preescaler, pero se le puede asignar una relación de prescaler de hasta 1:256, incrementando 1 cada 256 ciclos de instrucción. La lectura del registro TMR0 refleja el valor del timer en cualquier momento, y una escritura va a forzar el valor del timer y continuará a partir de ese valor escrito (Un detalle, luego de escribir el registro TMR0, el incremento del timer se inhibe por los siguientes dos ciclos de instrucción)
 
-- T0CS==1 es modo "contador", el registro TMR0 se incrementará en cada flanco positivo o negativo (configurable) de la señal en el pin RA4/TCKI. El tipo de transición (positiva o negativa) necesaria para producir un incremento se configura en el bit T0SE del registro OPTION_REG, un 0 en este bit provoca incrementos en cada flanco positivo y viceversa. La frecuencia máxima permisible en el pin RA4/TCKI depende de la frecuencia de clock del micro, y si se usa preescaler o no. 
+- T0CS==1 es modo "contador", el registro TMR0 se incrementará en cada flanco positivo o negativo (configurable) de la señal en el pin RA4/T0CKI. El tipo de transición (positiva o negativa) necesaria para producir un incremento se configura en el bit T0SE del registro OPTION_REG, un 0 en este bit provoca incrementos en cada flanco positivo y viceversa. La frecuencia máxima permisible en el pin RA4/T0CKI depende de la frecuencia de clock del micro, y si se usa preescaler o no. 
 
 Siendo TMR0 de 8 bits, la cuenta máxima que puede adquirir es 0xFF, de 0 a 255 cuentas. Si el valor de este registro desborda, pasa de 0xFF a 0x00, automáticamente se setea el bit T0IF del registro INTCON y produce una interrupción (si está habilitada en forma particular y global).
 
@@ -142,10 +144,6 @@ Para configurarlo deben escribirse los primeros 3 bits del registro OPTION_REG, 
     para WDT            1:1   1:2   1:4   1:8   1:16   1:32   1:64   1:128
 
 Si por ejemplo asigno al TMR0 el modo de "timer" con una relación de 1:32, significa que cada 32 ciclos de instrucción el registro del Timer se incrementará en 1.
-
-<p align="center"> 
-<img src="https://raw.githubusercontent.com/hernaneche/hernaneche.github.io/master/diagram_t0.png" />
-</p>
 
 Una forma conveniente de utilizar el timer es habilitando una interrupción para que "avise" cuando se desborda, otra manera es chequear la bandera continuamente (polling), aunque el timer puede usarse así, sin interrupciones, no es la mejor manera, aquí un código para probar la versión polling:
 
