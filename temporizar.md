@@ -3,7 +3,7 @@
 ---
   
 ##Procesando instrucciones 
-Un procesador normalmente ejecuta instrucciones de manera consecutiva, sin detenerse, una manera de separar dos acciones en el tiempo, es ejecutar entre medio otras instrucciones, y conociendo cuanto tarda cada una (cantidad de ciclos de clock) se pueden calcular el retardo, contando las instrucciones agregadas y sus repeticiones. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
+Un procesador normalmente ejecuta instrucciones de manera consecutiva, sin detenerse, una manera de separar dos acciones en el tiempo, es ejecutar entre medio otras instrucciones, y conociendo cuanto tarda cada una (cantidad de ciclos de clock) se puede calcular el retardo contando las instrucciones agregadas y sus repeticiones. La instrucción 'nop' es especialmente útil para esto ya que no tiene otros efectos colaterales, más que gastar el tiempo en ejecución. 
 
 Ejemplo en una subrutina de retardo
 
@@ -182,6 +182,6 @@ Una forma conveniente de utilizar el timer es habilitando una interrupción para
     apaga:      bcf PORTB, 0       ;pone en cero bit 0 del PORTB (apaga led)
                 goto bucle
     
-    end
+                end
     
     
