@@ -127,7 +127,7 @@ Este timer se compone de un registro de 8 bits TMR0 que se encuentra en la direc
 
 - T0CS==1 es modo "contador", el registro TMR0 se incrementará en cada flanco positivo o negativo (configurable) de la señal en el pin RA4/T0CKI. El tipo de transición (positiva o negativa) necesaria para producir un incremento se configura en el bit T0SE del registro OPTION_REG, un 0 en este bit provoca incrementos en cada flanco positivo y viceversa. La frecuencia máxima permisible en el pin RA4/T0CKI depende de la frecuencia de clock del micro, y si se usa preescaler o no. 
 
-<p>
+<p style="text-align:center;">
 <img src="https://raw.githubusercontent.com/hernaneche/hernaneche.github.io/master/diagram_t0.png" />
 </p>
 
