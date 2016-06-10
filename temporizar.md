@@ -123,7 +123,9 @@ Se recomienda que la instrucción **clrwdt** esté en un bucle principal del pro
 
 Este timer se compone de un registro de 8 bits TMR0 que se encuentra en la dirección 0x01 del mapa de memoria. Tiene dos modos de operación, como timer y como contador, se configuran a través del bit **T0CS** en el registro OPTION_REG.
 
+<p>
 <img src="https://raw.githubusercontent.com/hernaneche/hernaneche.github.io/master/diagram_t0.png" />
+</p>
 
 - T0CS==0 es modo "timer", el timer se incrementa por cada ciclo de instrucción (1:1) si no se configura preescaler, pero se le puede asignar una relación de prescaler de hasta 1:256, incrementando 1 cada 256 ciclos de instrucción. La lectura del registro TMR0 refleja el valor del timer en cualquier momento, y una escritura va a forzar el valor del timer y continuará a partir de ese valor escrito (Un detalle, luego de escribir el registro TMR0, el incremento del timer se inhibe por los siguientes dos ciclos de instrucción)
 
