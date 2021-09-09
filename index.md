@@ -10,5 +10,8 @@
 [Temporizar con microcontroladores](#!/temporizar) &middot; Introducción temporización microcontroladores.
 
 ### Web Experiments
+
+[Control Digital](http://hernaneche.github.io/control_digital)
 [The list of everything](http://hernaneche.github.io/thelist)
+
 
