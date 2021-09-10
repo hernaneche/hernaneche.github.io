@@ -14,7 +14,7 @@
 ### [The list of everything](http://hernaneche.github.io/thelist)    
 This list maps Data ↔ numbers, you can find anything, but not everything. 
 
-### [Control Digital](http://hernaneche.github.io/control_digital)  
+### [Digital Control](http://hernaneche.github.io/control_digital)  
 Simulatig discrete time model of dinamical systems.
 
 
