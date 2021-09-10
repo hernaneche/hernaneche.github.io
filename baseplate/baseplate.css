@@ -9,8 +9,8 @@ p, blockquote, th, td {
 /* Layout. */
 html {  
     background:linear-gradient(
-      rgba(255, 255, 255, 0.9), 
-      rgba(255, 255, 255, 0.9))
+      rgba(155, 155, 155, 0.1), 
+      rgba(155, 155, 155, 0.1))
     ,url("../img/background.jpg") center center no-repeat; 
     background-attachment:fixed;  
     background-size: cover;
@@ -155,13 +155,14 @@ div.footer {
 
 /* The visible paper-like page. */
 #wrapper, .page {
-  background-color: #fff;
+  background-color: rgba(200,255,200,.6);
   margin: 0 auto;
   margin-bottom: 40px;    
   border-radius: 3px;
   padding: 40px 65px 25px 65px;
   position: relative;
   top: 23px;
+  border-radius: 10px;
   /*
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -224,7 +225,8 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #555;
+    
+  background-color: rgba(61, 126, 170, .4) ;
 }
 
 

@@ -1,17 +1,20 @@
 
-## Textos 
+<!-- ## Text -->
 
-### Thoughts
-[The Kerckhoffs's Principle](#!/Kerckhoffs) &middot; why it works and why it doesn't.  
+<!--### Thoughts-->
+<!-- [The Kerckhoffs's Principle](#!/Kerckhoffs) &middot; why it works and why it doesn't.  -->
   
 <!-- [P vs NP problem](#!/pnp) &middot;  how to solve any but not every problem.-->
 
-### Materials
-[Temporizar con microcontroladores](#!/temporizar) &middot; Introducción temporización microcontroladores.
+<!--### Materials
+[Temporizar con microcontroladores](#!/temporizar) &middot; Introducción temporización microcontroladores. -->
 
-### Web Experiments
+## Some testing webs
 
-[Control Digital](http://hernaneche.github.io/control_digital)  
-[The list of everything](http://hernaneche.github.io/thelist)
+### [The list of everything](http://hernaneche.github.io/thelist)    
+This list maps Data ↔ numbers, you can find anything, but not everything. 
+
+### [Control Digital](http://hernaneche.github.io/control_digital)  
+Simulatig discrete time model of dinamical systems.
 
 
