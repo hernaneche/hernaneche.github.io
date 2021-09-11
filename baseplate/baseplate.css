@@ -12,9 +12,9 @@ html {
       rgba(155, 155, 155, 0.1), 
       rgba(155, 155, 155, 0.1))
     ,url("../img/background.jpg") center center no-repeat; */
-    background: url("../img/background.jpg") center center no-repeat; 
-    background-attachment:fixed;  
-    background-size: cover;
+    /*background: url("../img/background.jpg") center center no-repeat; */
+   /* background-attachment:fixed;  
+    background-size: cover;*/
 }
 
 body{font-family:'Istok Web', sans-serif, 'Georgia'; 

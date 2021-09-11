@@ -134,6 +134,16 @@
 <script type="text/javascript">
   var loadFileSucessOld = loadFileSuccess;
 
+ function loadImg(src) {
+    return new Promise(function(resolve, reject) {
+        const image = new Image();
+        image.addEventListener('load', resolve);
+        image.addEventListener('error', reject);
+        image.src = src;
+    });
+}
+
+
      
  async function  loading(){
 
@@ -151,8 +161,19 @@
                   console.log('ready load DOM');
               });   
         });
+    
+      const imageURL = '/img/background.jpg';
+      var p3=loadImg(imageURL).then(() => {        
+        document.body.style.backgroundPosition = 'center';
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundAttachment="fixed";
+        document.body.style.backgroundSize="cover";
+        document.body.style.backgroundImage = 'url(' + imageURL + ')';
+        console.log('ready load img');
+      });
 
-      await Promise.all([p1,p2]);
+      await Promise.all([p1,p2,p3]);
+      console.log("show");
       document.getElementById('loading').style.visibility='hidden';          
  }
  loading();
