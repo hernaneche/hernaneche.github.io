@@ -141,12 +141,14 @@
                             loadFileSuccess = function(doc) {                                   
                                   loadFileSucessOld(doc);           
                                   resolver(); 
+                                  console.log('ready load doc');
                               };
                             });      
 
         var p2=new Promise((resolver) => {
                 document.addEventListener("DOMContentLoaded", function(event) {  
                   resolver();
+                  console.log('ready load DOM');
               });   
         });
 
