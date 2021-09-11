@@ -134,13 +134,26 @@
 <script type="text/javascript">
   var loadFileSucessOld = loadFileSuccess;
 
-  loadFileSuccess = function(doc) {       
-      loadFileSucessOld(doc);
+     
+ async function  loading(){
+
+        var p1=new Promise((resolver) => {
+                            loadFileSuccess = function(doc) {                                   
+                                  loadFileSucessOld(doc);           
+                                  resolver(); 
+                              };
+                            });      
+
+        var p2=new Promise((resolver) => {
+                document.addEventListener("DOMContentLoaded", function(event) {  
+                  resolver();
+              });   
+        });
+
+      await Promise.all([p1,p2]);
       document.getElementById('loading').style.visibility='hidden';          
-  };
-  
-  
-    
+ }
+ loading();
 </script>
 
 </body>
