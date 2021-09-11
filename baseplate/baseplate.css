@@ -8,10 +8,11 @@ p, blockquote, th, td {
 
 /* Layout. */
 html {  
-    background:linear-gradient(
+    /*background:linear-gradient(
       rgba(155, 155, 155, 0.1), 
       rgba(155, 155, 155, 0.1))
-    ,url("../img/background.jpg") center center no-repeat; 
+    ,url("../img/background.jpg") center center no-repeat; */
+    background: url("../img/background.jpg") center center no-repeat; 
     background-attachment:fixed;  
     background-size: cover;
 }
@@ -21,7 +22,7 @@ body{font-family:'Istok Web', sans-serif, 'Georgia';
 	font-size: 19px;  
 	text-align: justify;
 	margin: 0 auto; 
-	width: 50em;
+	width: 65%;
 	max-width:90%; 
 	word-spacing: -2px;
 }
@@ -155,7 +156,7 @@ div.footer {
 
 /* The visible paper-like page. */
 #wrapper, .page {
-  background-color: rgba(200,255,200,.6);
+  background-color: rgba(240,255,240,.9);
   margin: 0 auto;
   margin-bottom: 40px;    
   border-radius: 3px;

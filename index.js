@@ -26,6 +26,7 @@ function init() {
 }
 
 function loadFile(docName) {
+  console.log("docName:"+docName);
   var doc = new baseplate.Document(docName);
   doc.addSuccessCallback(function() { loadFileSuccess(doc); });
   doc.addErrorCallback(function(xhr) { loadFileError(doc, xhr); });
