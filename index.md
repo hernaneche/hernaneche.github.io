@@ -15,6 +15,6 @@
 This list maps Data ↔ numbers, you can find anything, but not everything. 
 
 ### [Digital Control](http://hernaneche.github.io/control_digital)  
-Simulatig discrete time model of dinamical systems.
+Discrete-time dynamic model systems simulation.
 
 
