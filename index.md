@@ -11,8 +11,8 @@
 
 ## Some testing webs
 
-### [The list of everything](http://hernaneche.github.io/thelist)    
-This list maps Data ↔ numbers, you can find anything, but not everything. 
+### [The list](http://hernaneche.github.io/thelist)    
+This list maps Data ↔ numbers: you can find anything, but not everything. 
 
 ### [Digital Control](http://hernaneche.github.io/control_digital)  
 Discrete-time dynamic model systems simulation.
