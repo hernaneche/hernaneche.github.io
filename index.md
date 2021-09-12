@@ -9,7 +9,7 @@
 <!--### Materials
 [Temporizar con microcontroladores](#!/temporizar) &middot; Introducción temporización microcontroladores. -->
 
-## Some testing webs
+## Some test websites 
 
 ### [The list](http://hernaneche.github.io/thelist)    
 This list maps Data ↔ numbers: you can find anything, but not everything. 
